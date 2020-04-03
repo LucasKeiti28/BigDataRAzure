@@ -20,7 +20,7 @@ df1
 # Crie um loop que verifique se há números maiores que 10 e imprima o número e uma mensagem no console.
 
 # Criando um Vetor
-vec1 <- c(12, 3, 4, 19, 34)
+vec1 <- c(12, 3, 4, 19, 34, 10)
 vec1
 
 for(val in vec1){
@@ -29,13 +29,26 @@ for(val in vec1){
   }
 }
 
+for (i in 1:length(vec1)) {
+  if(vec1[i] > 10) {
+    print(vec1[i])
+    print('Este elememto e maior que 10.')
+  } else if(vec1[i] < 10)  {
+    print(vec1[i])
+    print ('Este elemento e menor que 10.')
+  } else {
+    print(vec1[i])
+    print ('Este elemento e igual a 10.')
+  }
+}
+
 
 # Exercício 4 - Conisdere a lista abaixo. Crie um loop que imprima no console cada elemento da lista
 lst2 <- list(2, 3, 5, 7, 11, 13)
 lst2
 
-for (val in lst2) {
-  print(val)
+for (i in lst2) {
+  print(i)
 }
 
 # Exercício 5 - Considere as duas matrizes abaixo. 
@@ -55,9 +68,21 @@ mat1%*%mat2
 
 # Exercício 6 - Crie um vetor, matriz, lista e dataframe e faça a nomeação de cada um dos objetos
 vec2 <- c(1,2,3)
-mat3 <- matrix(vec2, ncol=1)
-list2 <- list(1,2,3,4,5)
-df2 <- data.frame(teste=c(1,2,3), result=(c(TRUE, FALSE, TRUE)))
+names(vec2) <- c('obs1', 'obs2', 'obs3')
+vec2
+
+mat3 <- matrix(c(1:50), ncol=3, nrow=3)
+dimnames(mat3) <- (list(c('obs1', 'obs2', 'obs3'), c('var1', 'var2', 'var3')))
+mat3
+
+list2 <- list(1,2,3)
+names(list2) <- c('dim1', 'dim2', 'dim3')
+list2
+
+df2 <- data.frame(teste=c(1,2,3), result=(c(TRUE, FALSE, TRUE)), list=list2)
+colnames(df2) <- c('Caracteres', 'Float', 'Logico')
+rownames(df2) <- c('obs1', 'obs2', 'obs3')
+df2
 View(df2)
 
 # Exercício 7 - Considere a matriz abaixo. Atribua valores NA de forma aletória para 50 elementos da matriz
@@ -65,7 +90,12 @@ View(df2)
 mat2 <- matrix(1:90, 10)
 mat2
 ?sample()
-sample(mat2,50, replace=TRUE) 
+#sample(mat2,50, replace=TRUE) 
+x <- sample(1:50,10)
+x
+
+mat2[sample(1:50,10)] = NA
+mat2
 
 # Exercício 8 - Para a matriz abaixo, calcule a soma por linha e por coluna
 mat1 <- matrix(c(1:50), nrow = 5, ncol = 5, byrow = T) 
@@ -80,6 +110,10 @@ a <- c(100, 10, 10000, 1000)
 a
 ?sort()
 sort(a, decreasing = FALSE)
+
+#Utilizando funcao order
+order(a)
+a[order(a)]
 
 # # Exercício 10 - Imprima no console todos os elementos da matriz abaixo que forem maiores que 15
 mat1 <- matrix(c(1:50), nrow = 5, ncol = 5, byrow = T)
