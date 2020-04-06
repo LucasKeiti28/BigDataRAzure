@@ -33,8 +33,12 @@ hist(dados, labels = T, ylim = c(0,10), breaks = 10, main = "Histograma das Velo
 
 # Adicionando linhas ao histograma
 grafico <- hist(dados, breaks = 10, main = "Histograma das Velocidades")
+?seq
 
 xaxis = seq(min(dados), max(dados), length = 10)
+xaxis
+min(dados)
+?dnorm
 yaxis = dnorm(xaxis, mean = mean(dados), sd = sd(dados))
 yaxis = yaxis*diff(grafico$mids)*length(dados)
 
